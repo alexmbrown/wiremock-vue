@@ -1,15 +1,22 @@
 <template>
-    <section class="flex">
+    <section class="flex" v-if="mappings">
         <nav class="full-height">
             <add-mapping-modal></add-mapping-modal>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" v-if="mappings.length > 0">
                 <li v-for="(mapping, index) in mappings" :key="index">
                     <mapping v-bind:mapping="mapping"></mapping>
                 </li>
             </ul>
+            <p v-else>No Mappings</p>
         </nav>
         <router-view class="flex-1"></router-view>
     </section>
+    <p v-else-if="error">
+        {{ error }}
+    </p>
+    <p v-else>
+        Server not connected
+    </p>
 </template>
 
 <script>
@@ -24,36 +31,38 @@
   export default {
     components: {
       AddMappingModal,
-      'mapping': Mapping
+      Mapping
     },
     data () {
       return {
-        mappings: []
+        error: null,
+        mappings: null
       }
     },
     beforeRouteEnter (to, from, next) {
       getMappings(to.params.serverId)
         .then(res => next(vm => vm.onResolve(res.data.mappings)))
-        .catch(err => next(vm => vm.onError(err)))
+        .catch(err => next(vm => vm.onError(err.response)))
     },
     beforeRouteUpdate (to, from, next) {
         getMappings(to.params.serverId)
           .then(res => {
-            this.onResolve(res.data)
+            this.onResolve(res.data.mappings)
             next()
           })
           .catch(err => {
-            this.onError(err)
+            this.onError(err.response)
             next()
           })
     },
     methods: {
       onResolve (mappings) {
-        this.mappings = null
         this.mappings = mappings
       },
       onError (err) {
-        console.log(err)
+        if (err.status !== 404) {
+            this.error = err
+        }
       }
     }
   }
@@ -63,10 +72,10 @@
     @import '../../../assets/styles/color-palette.scss';
 
     section {
-        background: color-palette('background');
+        background: color-palette('foreground');
     }
 
     nav {
-        background: color-palette('foreground');
+        background: color-palette('background');
     }
 </style>

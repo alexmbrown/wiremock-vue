@@ -29,12 +29,4 @@
         margin-right: 0.5rem;
         color: gray;
     }
-
-    .wiremock {
-
-    }
-
-    .vue {
-
-    }
 </style>

@@ -21,6 +21,7 @@ module.exports = function startServer () {
   apiRouter.get('/servers', routes.servers.index)
   apiRouter.post('/servers', routes.servers.create)
   apiRouter.get('/servers/:serverId/mappings', routes.mappings.index)
+  apiRouter.get('/servers/:serverId/mappings/:mappingId', routes.mappings.get)
 
   app
     .use(apiRouter.routes())

@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'details', params: {mappingId: mapping.id}, props: {mapping}}" v-if="mapping.request">
+    <router-link :to="{name: 'details', params: {mappingId: mapping.id}}" v-if="mapping.request">
         {{ mapping.request.urlPattern }}<br>{{ mapping.request.method }}
     </router-link>
 </template>

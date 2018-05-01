@@ -55,7 +55,7 @@
           required
         }
       }
-    },
+    }
   }
 </script>
 

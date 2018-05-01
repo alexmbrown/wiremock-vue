@@ -3,12 +3,6 @@
 const request = require('request-promise')
 
 module.exports = {
-  getMappings: async address => {
-    try {
-      return await request(`${address}/__admin/mappings`)
-    } catch (err) {
-      return [];
-    }
-
-  }
+  getMapping: (address, mappingId) => request(`${address}/__admin/mappings/${mappingId}`),
+  getMappings: address => request(`${address}/__admin/mappings`)
 }

@@ -28,8 +28,7 @@ const routes = [
           {
             name: 'details',
             path: ':mappingId',
-            component: MappingDetails,
-            props: true
+            component: MappingDetails
           },
           {
             name: 'mappings',

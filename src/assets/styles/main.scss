@@ -11,6 +11,10 @@ html, body {
   cursor: pointer;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 .flex, .flex-col {
   display: flex;
 
