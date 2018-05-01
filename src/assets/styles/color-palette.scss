@@ -1,0 +1,14 @@
+$color-palette: (
+  'primary': #1D88DC,
+  'primary-dark': #077CD6,
+  'primary-light': #439CE1,
+  'secondary': #9FC0D6,
+  'tertiary': #ACC9DB,
+  'foreground': #FCFCFB,
+  'background': #9FB3CA,
+  'text-primary': #FFF
+);
+
+@function color-palette($key: 'primary') {
+  @return map-get($color-palette, $key);
+}
