@@ -77,5 +77,9 @@
 
     nav {
         background: color-palette('background');
+        height: 100%;
+        width: 18rem;
+        min-width: 18rem;
+        overflow-y: auto;
     }
 </style>

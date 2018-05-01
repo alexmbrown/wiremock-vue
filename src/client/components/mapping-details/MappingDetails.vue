@@ -1,5 +1,5 @@
 <template>
-    <div v-if="mapping">
+    <div id="details" v-if="mapping">
         {{ mapping }}
         <wv-request v-bind:request="mapping.request"></wv-request>
         <wv-response v-bind:response="mapping.response"></wv-response>
@@ -54,7 +54,9 @@
 </script>
 
 <style scoped>
-    div {
+    div#details {
         padding: 1rem;
+        height: 100%;
+        overflow-y: auto;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <b-navbar fixed="top" type="light" variant="light">
+    <b-navbar fixed="top" type="light" variant="light" class="shadow">
         <b-navbar-brand href="/">
             <img class="wiremock" src="../../assets/img/wiremock.png"/>
             <icon name="plus"></icon>
@@ -15,6 +15,7 @@
 </script>
 
 <style scoped>
+
     a.navbar-brand {
         display: flex;
         align-items: center;

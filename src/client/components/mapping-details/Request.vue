@@ -43,6 +43,11 @@
                 </b-form-group>
             </b-row>
             <b-row>
+                <wv-key-value-matcher-group
+                        title
+                        add event
+                        model
+                ></wv-key-value-matcher-group>
                 <b-row class="full-width space-between">
                     <h4>Headers</h4>
                     <div>
@@ -95,7 +100,7 @@
   import { required } from 'vuelidate/lib/validators'
   import WvKeyValueMatcher from './KeyValueMatcher'
 
-  function keyValueMap ([key, value]) {
+  function keyValueMatcherMap ([key, value]) {
     // TODO account for matcher
     return { key, value }
   }
@@ -106,13 +111,13 @@
     },
     created () {
       if (this.request && this.request.cookies) {
-        this.cookies =  this.request.cookies.map(keyValueMap)
+        this.cookies =  this.request.cookies.map(keyValueMatcherMap)
       }
       if (this.request && this.request.headers) {
-        this.headers =  this.request.header.map(keyValueMap)
+        this.headers =  this.request.header.map(keyValueMatcherMap)
       }
       if (this.request && this.request.queryParameters) {
-        this.queryParams = this.request.queryParameters.map(keyValueMap)
+        this.queryParams = this.request.queryParameters.map(keyValueMatcherMap)
       }
     },
     data () {
